@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>To-Do List App</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.todo-box{
+    background:white;
+    padding:20px;
+    width:350px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:70%;
+    padding:8px;
+}
+
+button{
+    padding:8px 10px;
+    background:blue;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+button:hover{
+    background:green;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+    margin-top:15px;
+}
+
+li{
+    background:#f4f4f4;
+    margin:8px 0;
+    padding:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-radius:5px;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}
+
+.small-btn{
+    background:red;
+    padding:5px;
+    border:none;
+    color:white;
+    cursor:pointer;
+    border-radius:3px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="todo-box">
+
+    <h2>To-Do List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="taskList"></ul>
+
+</div>
+
+<script>
+function addTask(){
+    let input = document.getElementById("taskInput");
+    let task = input.value;
+
+    if(task === ""){
+        alert("Please enter a task!");
+        return;
+    }
+
+    let li = document.createElement("li");
+
+    li.innerHTML = `
+        <span onclick="toggleComplete(this)">${task}</span>
+        <button class="small-btn" onclick="deleteTask(this)">X</button>
+    `;
+
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
+}
+
+function deleteTask(btn){
+    btn.parentElement.remove();
+}
+
+function toggleComplete(span){
+    span.classList.toggle("completed");
+}
+</script>
+
+</body>
+</html>

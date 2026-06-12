@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Clone</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+}
+
+/* NAVBAR */
+.navbar{
+    background:#131921;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    padding:15px;
+    align-items:center;
+}
+
+.navbar h2{
+    margin:0;
+}
+
+.navbar input{
+    width:40%;
+    padding:8px;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(to right, #ffecd2, #fcb69f);
+    padding:60px;
+    text-align:center;
+}
+
+/* PRODUCTS */
+.products{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:200px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:10px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    transition:transform 0.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+
+button{
+    background:orange;
+    border:none;
+    padding:8px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+button:hover{
+    background:green;
+    color:white;
+}
+
+/* FOOTER */
+footer{
+    background:#131921;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Amazon Clone</h2>
+    <input type="text" placeholder="Search products...">
+</div>
+
+<div class="hero">
+    <h1>Welcome to Shopping Zone</h1>
+    <p>Best deals available here</p>
+</div>
+
+<div class="products">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVhZHBob25lc3xlbnwwfHwwfHx8MA%3D%3D" alt="">
+        <h3>Headphones</h3>
+        <p>₹999</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="https://i.pinimg.com/236x/37/af/07/37af0765eeb3d0dde512ea8fd49807d1.jpg" alt="">
+        <h3>Laptop</h3>
+        <p>₹45,000</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="https://img.magnific.com/free-vector/3d-smartwatches-set-isolated-white-background_107791-29222.jpg" alt="">
+        <h3>Smart Watch</h3>
+        <p>₹1999</p>
+        <button>Add to Cart</button>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Website Clone Project</p>
+</footer>
+
+</body>
+</html>

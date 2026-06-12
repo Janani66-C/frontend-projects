@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quiz App</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:0;
+    height:100vh;
+
+    /* 🌈 Background Color */
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.quiz-box{
+    background:white;
+    padding:25px;
+    width:350px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#333;
+}
+
+.option{
+    display:block;
+    margin:10px 0;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#28a745;
+}
+
+#score{
+    text-align:center;
+    font-weight:bold;
+    margin-top:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="quiz-box">
+
+    <h2 id="question">Question</h2>
+
+    <label class="option">
+        <input type="radio" name="option" value="A"> Option A
+    </label>
+
+    <label class="option">
+        <input type="radio" name="option" value="B"> Option B
+    </label>
+
+    <label class="option">
+        <input type="radio" name="option" value="C"> Option C
+    </label>
+
+    <label class="option">
+        <input type="radio" name="option" value="D"> Option D
+    </label>
+
+    <button onclick="nextQuestion()">Next</button>
+
+    <p id="score"></p>
+
+</div>
+
+<script>
+const questions = [
+    {
+        q: "What does HTML stand for?",
+        a: "A",
+        options: ["Hyper Text Markup Language", "High Text Machine Language", "Home Tool Markup Language", "None"]
+    },
+    {
+        q: "What is CSS used for?",
+        a: "B",
+        options: ["Database", "Styling", "Gaming", "Server"]
+    },
+    {
+        q: "Which language is used for interactivity?",
+        a: "C",
+        options: ["HTML", "CSS", "JavaScript", "Python"]
+    }
+];
+
+let index = 0;
+let score = 0;
+
+function loadQuestion(){
+    document.getElementById("question").innerText = questions[index].q;
+
+    let inputs = document.querySelectorAll("label.option");
+    inputs.forEach((el, i) => {
+        el.innerHTML = `
+            <input type="radio" name="option" value="${String.fromCharCode(65+i)}">
+            ${questions[index].options[i]}
+        `;
+    });
+}
+
+function nextQuestion(){
+
+    let selected = document.querySelector('input[name="option"]:checked');
+
+    if(!selected){
+        alert("Please select an option!");
+        return;
+    }
+
+    if(selected.value === questions[index].a){
+        score++;
+    }
+
+    index++;
+
+    if(index < questions.length){
+        loadQuestion();
+    } else {
+        document.querySelector(".quiz-box").innerHTML =
+        `<h2>Quiz Finished</h2>
+         <p>Your Score: ${score}/${questions.length}</p>`;
+    }
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
